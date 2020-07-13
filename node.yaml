@@ -3,24 +3,25 @@ kind: Service
 metadata:
   name: node-service
   labels:
-    app: node-service
+    app: api-todo
+    tier: node-api
 spec:
   selector:
     app: api-todo
     tier: node-api
   type: LoadBalancer
-  # ClusterIP and LoadBalancer are other options
   ports:
-  - nodePort: 30570 # this can be used to change the random PAT to fixed
+  - nodePort: 30534
     port: 3000
 ---
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: node
   labels:
     app: node
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: api-todo
