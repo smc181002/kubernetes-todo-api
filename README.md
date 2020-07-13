@@ -9,7 +9,7 @@ kubectl apply -k .
 
 if kustomization doesn't work with your version, use
 ```
-kubectl apply -f databse.yaml;\
+kubectl apply -f database.yaml;\
 kubectl apply -f node.yaml;
 ```
 
